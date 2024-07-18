@@ -81,12 +81,17 @@ public class Main {
 
         que = new ArrayDeque<>(selectedHospitals);
         visit = new boolean[n][n];
+        for (int[] select : selectedHospitals) {
+            visit[select[0]][select[1]] = true;
+        }
+        
 
         while(!que.isEmpty()) {
             int[] cur = que.pollFirst();
+            // System.out.println(Arrays.toString(cur));
             int curDay = cur[2];
             day = curDay;
-            if (killedVirus == virusCnt) return day;
+            if (killedVirus == virusCnt) continue;
 
             for (int i = 0; i < 4; i++) {
                 int ny = cur[0] + dy[i];
@@ -101,6 +106,8 @@ public class Main {
                 que.add(next);
             }
         }
-        return Integer.MAX_VALUE;
+        
+        if (killedVirus != virusCnt) day = Integer.MAX_VALUE;
+        return day;
     }
 }
