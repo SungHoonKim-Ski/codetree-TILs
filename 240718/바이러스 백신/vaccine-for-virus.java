@@ -84,9 +84,9 @@ public class Main {
 
         while(!que.isEmpty()) {
             int[] cur = que.pollFirst();
-            // System.out.println(Arrays.toString(cur));
             int curDay = cur[2];
             day = curDay;
+            if (killedVirus == virusCnt) return day;
 
             for (int i = 0; i < 4; i++) {
                 int ny = cur[0] + dy[i];
@@ -101,9 +101,6 @@ public class Main {
                 que.add(next);
             }
         }
-        // System.out.println("ㅡㅡ");
-        if (killedVirus != virusCnt) return Integer.MAX_VALUE;
-        // System.out.println("day : " + day);
-        return day;
+        return Integer.MAX_VALUE;
     }
 }
