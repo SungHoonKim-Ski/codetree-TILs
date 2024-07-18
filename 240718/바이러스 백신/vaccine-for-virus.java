@@ -94,8 +94,8 @@ public class Main {
 
                 if (ny == -1 || nx == -1 || ny == n || nx == n) continue;
                 if (visit[ny][nx]) continue;
-                if (map[ny][nx] == 2 || map[ny][nx] == 1) continue;
-                killedVirus++;
+                if (map[ny][nx] == 1) continue;
+                if (map[ny][nx] == 0) killedVirus++;
                 visit[ny][nx] = true;
                 int[] next = new int[] {ny, nx, curDay + 1};
                 que.add(next);
