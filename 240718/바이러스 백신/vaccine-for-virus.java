@@ -46,6 +46,11 @@ public class Main {
     }
 
     static void pro() {
+
+        if (virusCnt == 0) {
+            System.out.println(0);
+            return;
+        }
         select(0, 0, new ArrayList<int[]>());
         if (minDay == Integer.MAX_VALUE) minDay = -1;
         System.out.println(minDay);
