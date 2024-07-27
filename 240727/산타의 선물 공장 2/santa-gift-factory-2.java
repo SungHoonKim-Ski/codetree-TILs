@@ -15,6 +15,7 @@ public class Main {
 
     static StringTokenizer st;
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static StringBuilder sb = new StringBuilder();
 
     static int q, n, m;
 
@@ -297,35 +298,37 @@ public class Main {
             switch (cmd) {
                 case 100:
                     init();
-                    break;
+                    continue;
                 case 200:
-                    System.out.println(
-                        moveAll(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()))
+                    sb.append(
+                            moveAll(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()))
                     );
                     break;
                 case 300:
-                    System.out.println(
-                        moveFront(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()))
+                    sb.append(
+                            moveFront(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()))
                     );
                     break;
                 case 400:
-                    System.out.println(
-                        moveHalf(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()))
+                    sb.append(
+                            moveHalf(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()))
                     );
                     break;
                 case 500:
-                    System.out.println(
-                        getBoxInfo(Integer.parseInt(st.nextToken()))
+                    sb.append(
+                            getBoxInfo(Integer.parseInt(st.nextToken()))
                     );
                     break;
                 case 600:
-                    System.out.println(
-                        getBeltInfo(Integer.parseInt(st.nextToken()))
+                    sb.append(
+                            getBeltInfo(Integer.parseInt(st.nextToken()))
                     );
                     break;
             }
+            sb.append('\n');
             // System.out.println("cmd : " + cmd);
             // printBelt();
         }
+        System.out.println(sb);
     }
 }
