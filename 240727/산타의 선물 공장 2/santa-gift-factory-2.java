@@ -104,11 +104,11 @@ public class Main {
 
         if (srcBelt.cnt == 0) { // src 벨트만 비어있다면
             Box dstBox = dstBelt.head;
-            Box dstNext = dstBox.next;
-            if (dstNext == null) { //dst 벨트에 박스가 1개만 존재하는 경우
+            if (dstBox.next == null) { //dst 벨트에 박스가 1개만 존재하는 경우
                 dstBelt.head = null;
                 dstBelt.tail = null;
             } else { // dst 벨트에 박스가 2개이상 존재하는 경우
+                Box dstNext = dstBox.next;
                 dstBelt.head = dstNext;
                 dstNext.prev = null;
             }
@@ -120,11 +120,11 @@ public class Main {
             dstBelt.cnt--;
         } else if (dstBelt.cnt == 0) { // dst 벨트만 비어있다면
             Box srcBox = srcBelt.head;
-            Box srcNext = srcBox.next;
-            if (srcNext == null) { // src 벨트에 박스가 1개만 존재하는 경우
+            if (srcBox.next == null) { // src 벨트에 박스가 1개만 존재하는 경우
                 srcBelt.head = null;
                 srcBelt.tail = null;
             } else { // src 벨트에 박스가 2개이상 존재하는 경우
+                Box srcNext = srcBox.next;
                 srcBelt.head = srcNext;
                 srcNext.prev = null;
             }
