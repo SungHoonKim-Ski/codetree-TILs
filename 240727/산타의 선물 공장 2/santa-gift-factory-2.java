@@ -76,7 +76,6 @@ public class Main {
         Belt dstBelt = belts[m_dst];
 
         Box prevHead = dstBelt.head;
-        Box prevtail = dstBelt.tail;
 
         dstBelt.head = srcBelt.head;
         if (prevHead == null) { // 만약 도착 벨트가 비어있는 상태였다면
@@ -148,6 +147,7 @@ public class Main {
             } else if (srcNext == null) { // src만 박스가 1개 존재하는 경우
                 srcBelt.head = dstBox;
                 srcBelt.tail = dstBox;
+                dstBox.next = null;
 
                 dstBelt.head = srcBox;
                 srcBox.next = dstNext;
@@ -155,6 +155,7 @@ public class Main {
             } else if (dstNext == null) { // dst만 박스가 1개 존재하는 경우
                 dstBelt.head = srcBox;
                 dstBelt.tail = srcBox;
+                srcBox.next = null;
 
                 srcBelt.head = dstBox;
                 dstBox.next = srcNext;
@@ -323,8 +324,8 @@ public class Main {
                     );
                     break;
             }
-//            System.out.println("cmd : " + cmd);
-//            printBelt();
+            // System.out.println("cmd : " + cmd);
+            // printBelt();
         }
     }
 }
