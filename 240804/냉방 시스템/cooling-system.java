@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer st;
     static StringBuilder sb = new StringBuilder();
@@ -10,9 +11,13 @@ public class Main {
 
     static int[][] curCool, nextCool;
     static boolean[][][] wall;
-    static ArrayList<int[]> offices;
-    static ArrayList<int[]> aircons;
+    static ArrayList<int[]> offices, aircons;
 
+    static ArrayList<int[]> nextPos;
+    static Deque<int[]> que;
+
+
+    static boolean[][] visit;
     // 왼쪽, 위, 오른쪽, 아래
     static int[] dy = {0, -1, 0, 1};
     static int[] dx = {-1, 0, 1, 0};
@@ -35,12 +40,9 @@ public class Main {
 
     static void makeCool() {
 
-        Deque<int[]> que = new ArrayDeque<>();
-        ArrayList<int[]> nextPos = new ArrayList<>();
-
         for (int[] aircon: aircons) {
 
-            boolean[][] visit = new boolean[n][n];
+            visit = new boolean[n][n];
             int airconY = aircon[0];
             int airconX = aircon[1];
             int airconDir = aircon[2];
@@ -120,6 +122,7 @@ public class Main {
             }
         }
     }
+
     static void makeHot() {
         for (int i = 0; i < n - 1; i++) {
             curCool[i][0]--; // 0,0 1,0 2,0 // 0,0에서 밑으로
@@ -141,18 +144,7 @@ public class Main {
         }
         return true;
     }
-    static void print() {
-        StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                sb.append(String.format("%4d", curCool[i][j]));
-            }
-            sb.append('\n');
-        }
-        sb.append("ㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
-        System.out.println(sb);
-    }
     static void input() throws IOException {
         st = new StringTokenizer(br.readLine());
         n = Integer.parseInt(st.nextToken());
@@ -165,6 +157,9 @@ public class Main {
         offices = new ArrayList<>();
         aircons = new ArrayList<>();
 
+        que = new ArrayDeque<>();
+        nextPos = new ArrayList<>();
+        
         for (int i = 0; i < n; i++) {
             st = new StringTokenizer(br.readLine());
             for (int j = 0; j < n; j++) {
